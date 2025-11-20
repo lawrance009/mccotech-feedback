@@ -61,13 +61,7 @@
 
 /* Right - Info & Logo */
 .info-container {
-  flex: 3;
-  background: url(`${rightImage});
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: cover;
-
- 
+  flex: 3; 
 }
 
 /* Spinner animation */
