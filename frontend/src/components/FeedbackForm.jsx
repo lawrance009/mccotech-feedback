@@ -4,6 +4,8 @@ import logo from '../assets/logo1.png';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function FeedbackForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -38,7 +40,7 @@ function FeedbackForm() {
     setLoading(true);
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/feedback/submit',
+        `${API_BASE_URL}/api/feedback/submit`,
         formData
       );
 

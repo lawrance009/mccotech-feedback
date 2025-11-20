@@ -4,6 +4,10 @@ import Swal from 'sweetalert2';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Auth.css'; // merged CSS file for both Register and Login
 
+
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function Register() {
   const [admin, setAdmin] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
@@ -15,7 +19,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', admin);
+      await axios.post(`${API_BASE_URL}/api/auth/register`, admin);
 
       Swal.fire({
         icon: 'success',
@@ -25,7 +29,7 @@ function Register() {
         showConfirmButton: false,
       });
 
-      navigate('/login');
+      navigate('/Entry');
     } catch (err) {
       Swal.fire({
         icon: 'error',

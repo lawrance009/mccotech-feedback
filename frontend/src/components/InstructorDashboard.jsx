@@ -5,6 +5,9 @@ import Swal from 'sweetalert2';
 import '../styles/InstructorDashboard.css';
 import { useNavigate } from 'react-router-dom';
 
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function InstructorDashboard() {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +27,7 @@ function InstructorDashboard() {
           icon: 'warning',
           title: 'Please log in first!',
           showConfirmButton: true,
-        }).then(() => navigate('/login'));
+        }).then(() => navigate('/Entry'));
         return;
       }
 
@@ -32,7 +35,7 @@ function InstructorDashboard() {
         const payload = JSON.parse(atob(token.split('.')[1]));
         setAdminName(payload?.email?.split('@')[0] || 'Admin');
 
-        const res = await axios.get('http://localhost:5000/api/feedback/all', {
+        const res = await axios.get(`${API_BASE_URL}/api/feedback/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFeedbacks(res.data);
@@ -76,7 +79,7 @@ function InstructorDashboard() {
     try {
       const token = localStorage.getItem('instructorToken');
       await axios.put(
-        `http://localhost:5000/api/feedback/mark-read/${id}`,
+        `${API_BASE_URL}/api/feedback/mark-read/${id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -103,7 +106,7 @@ function InstructorDashboard() {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/api/feedback/${id}`, {
+        await axios.delete(`${API_BASE_URL}/api/feedback/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFeedbacks((prev) => prev.filter((fb) => fb._id !== id));
