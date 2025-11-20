@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/FeedbackForm.css';
 import logo from '../assets/logo1.png';
+import rightImage from '../assets/left1.png';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -112,10 +113,18 @@ function FeedbackForm() {
         </form>
       </div>
 
-      <div className="info-container">
+      <div
+        className="info-container"
+        style={{
+          backgroundImage: `url(${rightImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "right",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <img src={logo} alt="MccoTech Logo" className="logo" />
-
       </div>
+
 
       <footer>
         Developed by Lawrance Wagan Domah. Developer at MccoTech.

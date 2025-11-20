@@ -62,7 +62,7 @@
 /* Right - Info & Logo */
 .info-container {
   flex: 3;
-  background: url(../assets/left1.png);
+  background: url(`${rightImage});
   background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
