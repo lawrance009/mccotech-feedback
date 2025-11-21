@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/FeedbackForm.css';
 import logo from '../assets/logo1.png';
-import rightImage from '../assets/left1.png';
+import rightImage from '../assets/left1.PNG';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
