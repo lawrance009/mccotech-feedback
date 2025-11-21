@@ -82,3 +82,46 @@
     transform: translateY(0);
   }
 }
+
+
+/* 🔽 MOBILE & SMALL SCREENS */
+@media (max-width: 600px) {
+  .auth-container {
+    padding: 1rem;
+    align-items: flex-start;
+    justify-content: center;
+    align-items: center;      /* start a bit higher */
+  }
+
+  .auth-box {
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+
+  .auth-box h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .auth-box input {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+
+  .auth-btn {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}
+
+/* 🔽 VERY SMALL DEVICES / LANDSCAPE PHONES */
+@media (max-width: 400px) {
+  .auth-box {
+    padding: 1.2rem;
+  }
+
+  .auth-box h2 {
+    font-size: 1.1rem;
+  }
+}

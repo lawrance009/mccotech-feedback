@@ -134,10 +134,13 @@
 /* Footer */
 footer {
   position: absolute;
+  bottom: 0;
   right: 20px;
   font-size: 1rem;
   color: #555;
   padding: 20px;
+  width: 100%;
+  display: none;
 }
 
 /* Responsive Design */
@@ -159,10 +162,13 @@ footer {
   }
 
   footer {
+    width: 100%;
+    right: 0;
+    display: block;
     position: static;
     text-align: center;
     margin-top: 20px;
-  }
+    }
 
   .info-container .logo {
   display: none;
