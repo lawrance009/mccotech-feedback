@@ -127,7 +127,7 @@ function FeedbackForm() {
 
 
       <footer>
-        Developed by Lawrance Wagan Domah. Developer at MccoTech.
+       &copy; 2025 MccoTech Inc. All rights reserved.
       </footer>
     </div>
   );
