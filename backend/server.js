@@ -8,8 +8,32 @@ const mongoose = require('mongoose');
 // Create Express app
 const app = express();
 
-// ✅ Middleware (order matters)
-app.use(cors()); // Must come before routes
+// ✅ CORS setup (order matters)
+const allowedOrigins = [
+  'http://localhost:5173',                 // Local frontend
+  'https://mccotech-feedback.vercel.app/'  // ⬅️ REPLACE with your real Vercel URL
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true); // allow tools like Postman
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: false,
+  })
+);
+
+// Preflight handler
+app.options('*', cors());
+
 app.use(express.json()); // Parse JSON
 
 // ✅ Import routes
