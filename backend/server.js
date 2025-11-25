@@ -5,31 +5,28 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-// Create Express app
 const app = express();
 
-// ✅ CORS setup (order matters)
+// Create Express app
 const allowedOrigins = [
-  'http://localhost:5173',                 // Local frontend
-  'https://mccotech-feedback.vercel.app/'  // ⬅️ REPLACE with your real Vercel URL
+  'http://localhost:5173',                // local dev
+  'https://mccotech-feedback.vercel.app' // deployed frontend
 ];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // allow tools like Postman
-
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      } else {
-        return callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: false,
-  })
-);
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); // allow tools like Postman
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.warn('Blocked CORS request from:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization'],
+  credentials: false
+}));
 
 // Preflight handler
 app.options('', cors());
