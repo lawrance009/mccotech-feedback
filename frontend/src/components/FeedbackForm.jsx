@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/FeedbackForm.css';
 import logo from '../assets/logo1.png';
-import rightImage from '../assets/left1.PNG';
+import otherPicture from '../assets/bg2.jpg';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -96,7 +96,7 @@ function FeedbackForm() {
           </select>
           <input type="date" name="date" value={formData.date} onChange={handleChange} />
           <select name="rating" value={formData.rating} onChange={handleChange} required>
-            <option value="">Rate Lesson Clarity *</option>
+          <option value="">Rate Lesson Clarity <span style={{color: "red"}}>*</span></option>
             <option value="1">1 - Poor</option>
             <option value="2">2 - Fair</option>
             <option value="3">3 - Good</option>
@@ -116,7 +116,7 @@ function FeedbackForm() {
       <div
         className="info-container"
         style={{
-          backgroundImage: `url(${rightImage})`,
+          backgroundImage: `url(${otherPicture})`,
           backgroundSize: "cover",
           backgroundPosition: "right",
           backgroundRepeat: "no-repeat",

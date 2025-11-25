@@ -32,7 +32,7 @@ app.use(
 );
 
 // Preflight handler
-app.options('*', cors());
+app.options('', cors());
 
 app.use(express.json()); // Parse JSON
 
